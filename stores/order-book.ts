@@ -4,7 +4,6 @@ import type { OrderBook } from "~/types/order-book";
 export const useOrderBook = defineStore("orderBook", {
   state: () => ({
     symbol: { rest: "BTCUSDT", ws: "btcusdt" } as { rest: string; ws: string },
-    webSocket: null as WebSocket | null,
     asks: [] as string[][],
     bids: [] as string[][],
     lastUpdateId: 0,
@@ -42,13 +41,9 @@ export const useOrderBook = defineStore("orderBook", {
       );
       const worker = this.orderBookWorker;
 
-      const context = JSON.parse(JSON.stringify(this));
-      worker.postMessage({
-        lastUpdateId: context.lastUpdateId,
-        symbol: context.symbol,
-        asks: context.asks,
-        bids: context.bids,
-      });
+      const context = JSON.parse(JSON.stringify(this.$state));
+
+      worker.postMessage(context);
       worker.onmessage = (message) => {
         this.asks = message.data.asks;
         this.bids = message.data.bids;
