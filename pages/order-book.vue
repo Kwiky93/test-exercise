@@ -20,8 +20,9 @@
     <v-row class="flex-1-1 overflow-hidden mt-0">
       <v-col class="d-flex flex-wrap h-100 pt-0">
         <v-table
-          class="overflow-x-hidden"
           :class="[mobile ? 'w-100' : 'w-50', mobile ? 'h-50' : 'h-100']"
+          class="overflow-x-hidden text-green-lighten-1"
+          density="compact"
           fixed-header>
           <thead>
             <tr>
@@ -40,8 +41,9 @@
         </v-table>
 
         <v-table
-          class="overflow-x-hidden"
+          class="overflow-x-hidden text-red-lighten-1"
           :class="[mobile ? 'w-100' : 'w-50', mobile ? 'h-50' : 'h-100']"
+          density="compact"
           fixed-header>
           <thead>
             <tr>

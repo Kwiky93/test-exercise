@@ -10,7 +10,7 @@ export const useOrderBook = defineStore("orderBook", {
     lastUpdateId: 0,
     orderBookWorker: null as Worker | null,
     historySymbol: [] as Array<{ pair: string; time: string }>,
-    selectedCounts: 1000,
+    selectedCounts: 100,
   }),
 
   actions: {
