@@ -45,8 +45,8 @@ export const useOrderBook = defineStore("orderBook", {
 
       worker.postMessage(context);
       worker.onmessage = (message) => {
-        this.asks = message.data.asks;
-        this.bids = message.data.bids;
+        this.asks = message.data.asks || [];
+        this.bids = message.data.bids || [];
       };
     },
   },
